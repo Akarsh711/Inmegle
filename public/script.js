@@ -1,35 +1,35 @@
 const socket = io();
 
 const input = document.getElementById('input');
-const messages = document.getElementById('messages'); //obsolete
-const chatMessages = document.getElementById('chat-messages');
+// const messages = document.getElementById('messages'); //obsolete
+const chatMessages = document.getElementById('messages');
 const sendBtn = document.getElementById('send');
 const nextBtn = document.getElementById('next');
 
 sendBtn.onclick = () => {
   const msg = input.value;
   if (msg.trim()) {
-    appendMessage(`You: ${msg}`);
+    appendMessageSent(`You: ${msg}`);
     socket.emit('message', msg);
     input.value = '';
   }
 };
 
 nextBtn.onclick = () => {
-  appendMessage('🔁 Searching for a new partner...');
+  appendMessageSent('🔁 Searching for a new partner...');
   socket.emit('next');
 };
 
 socket.on('message', msg => {
-  appendMessage(`Stranger: ${msg}`);
+  appendMessageRecieve(`Stranger: ${msg}`);
 });
 
 socket.on('matched', () => {
-  appendMessage('✅ You are now connected to a stranger.');
+  appendMessageSent('✅ You are now connected to a stranger.');
 });
 
 socket.on('partner-left', () => {
-  appendMessage('❌ Stranger disconnected.');
+  appendMessageSent('❌ Stranger disconnected.');
 });
 
 //obsolete

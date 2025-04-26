@@ -2,19 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Omegle Clone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inmegle</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon_io/favicon.ico">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="chat">
-    <div id="messages"></div>
-    <input id="input" placeholder="Type a message..." autocomplete="off" />
-    <button id="send">Send</button>
-    <div id="controls">
-      <button id="next">Next</button>
+
+    <!-- <div id="chat-container">
+        <div id="messages"></div>
+        <input id="input" placeholder="Type a message..." autocomplete="off" />
+        <button id="send">Send</button>
+        <div id="controls">
+          <button id="next">Next</button>
+        </div>
+      </div> -->
+
+
+  <div class="chat-container">
+    <div class="chat-header">Messages</div>
+    <div class="chat-messages" id="messages">
+      <div class="message-received">Hey there! How are you?</div>
+      <div class="message-sent">I'm great! You?</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="input" placeholder="Type a message...">
+      <dv id="control">
+        <button id="next" class="emoji-button" >🔁</button>
+      </dv>
+      <button class="emoji-button" onclick="toggleEmojiPicker()">😊</button>
+      
+      <button id="send" class="send-button"onclick="sendMessage()">Send</button>
+    </div>
+    
+    <div class="emoji-picker" id="emojiPicker">
+      <span onclick="addEmoji('😀')">😀</span>
+      <span onclick="addEmoji('😁')">😁</span>
+      <span onclick="addEmoji('😂')">😂</span>
+      <span onclick="addEmoji('😍')">😍</span>
+      <span onclick="addEmoji('🥺')">🥺</span>
+      <span onclick="addEmoji('😎')">😎</span>
+      <span onclick="addEmoji('👍')">👍</span>
+      <span onclick="addEmoji('🙏')">🙏</span>
     </div>
   </div>
+  
 
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+      if (message) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'message sent';
+        msgDiv.textContent = message;
+        document.getElementById('chatMessages').appendChild(msgDiv);
+        input.value = '';
+        msgDiv.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function toggleEmojiPicker() {
+      const picker = document.getElementById('emojiPicker');
+      picker.classList.toggle('show');
+    }
+
+    function addEmoji(emoji) {
+      const input = document.getElementById('chatInput');
+      input.value += emoji;
+      input.focus();
+    }
+
+    document.addEventListener('click', function (e) {
+      const picker = document.getElementById('emojiPicker');
+      const button = document.querySelector('.emoji-button');
+      if (!picker.contains(e.target) && e.target !== button) {
+        picker.classList.remove('show');
+      }
+    });
+  </script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="script.js"></script>
 </body>
