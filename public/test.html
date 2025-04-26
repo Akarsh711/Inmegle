@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple Style Chat UI</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    
+
+
+    body {
+      {% comment %} background-color: #f2f2f7;
+      display: flex;
+      justify-content: center;  
+      align-items: center;
+      height: 100vh; {% endcomment %}
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #0b0b2b, #1b2735 70%, #090a0f);
+      overflow: hidden;
+    }
+
+    .chat-container {
+      width: 100%;
+      max-width: 999px;
+      height: 100vh;
+      max-height: 844px;
+      background-color: #fff;
+      border-radius: 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    @media (min-width: 600px) {
+      .chat-container {
+        border-radius: 30px;
+        margin: 20px;
+        height: calc(100vh - 40px);
+      }
+    }
+
+    .chat-header {
+      background-color: #f2f2f7;
+      padding: 20px;
+      font-weight: 600;
+      text-align: center;
+      font-size: 18px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      max-width: 70%;
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-size: 15px;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .message.sent {
+      background-color: #007aff;
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 0;
+    }
+
+    .message.received {
+      background-color: #e5e5ea;
+      color: #000;
+      align-self: flex-start;
+      border-bottom-left-radius: 0;
+    }
+
+    .chat-input {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-top: 1px solid #ccc;
+      background-color: #f9f9f9;
+    }
+
+    .chat-input input {
+      flex: 1;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      background-color: #e5e5ea;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .send-button {
+      background-color: #007aff;
+      color: white;
+      border: none;
+      margin-left: 10px;
+      padding: 10px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .emoji-picker {
+      position: absolute;
+      bottom: 70px;
+      right: 15px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      display: none;
+      flex-wrap: wrap;
+      gap: 5px;
+      max-width: 260px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .emoji-picker.show {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .emoji-picker span {
+      cursor: pointer;
+      font-size: 22px;
+      transition: transform 0.2s;
+    }
+
+    .emoji-picker span:hover {
+      transform: scale(1.2);
+    }
+
+    .emoji-button {
+        background-color: none;
+      background: none;
+      border: none;
+      font-size: 20px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+    <!-- <div id="chat-container">
+        <div id="messages"></div>
+        <input id="input" placeholder="Type a message..." autocomplete="off" />
+        <button id="send">Send</button>
+        <div id="controls">
+          <button id="next">Next</button>
+        </div>
+      </div> -->
+
+
+  <div class="chat-container">
+    <div class="chat-header">Messages</div>
+    <div class="chat-messages" id="messages">
+      <div class="message-received">Hey there! How are you?</div>
+      <div class="message-sent">I'm great! You?</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="input" placeholder="Type a message...">
+      <button class="emoji-button" onclick="toggleEmojiPicker()">😊</button>
+      <button id="send" class="send-button"onclick="sendMessage()">Send</button>
+    </div>
+    
+    <div class="emoji-picker" id="emojiPicker">
+      <span onclick="addEmoji('😀')">😀</span>
+      <span onclick="addEmoji('😁')">😁</span>
+      <span onclick="addEmoji('😂')">😂</span>
+      <span onclick="addEmoji('😍')">😍</span>
+      <span onclick="addEmoji('🥺')">🥺</span>
+      <span onclick="addEmoji('😎')">😎</span>
+      <span onclick="addEmoji('👍')">👍</span>
+      <span onclick="addEmoji('🙏')">🙏</span>
+    </div>
+  </div>
+  <div id="controls">
+    <button id="next">Next</button>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+      if (message) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'message sent';
+        msgDiv.textContent = message;
+        document.getElementById('chatMessages').appendChild(msgDiv);
+        input.value = '';
+        msgDiv.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function toggleEmojiPicker() {
+      const picker = document.getElementById('emojiPicker');
+      picker.classList.toggle('show');
+    }
+
+    function addEmoji(emoji) {
+      const input = document.getElementById('chatInput');
+      input.value += emoji;
+      input.focus();
+    }
+
+    document.addEventListener('click', function (e) {
+      const picker = document.getElementById('emojiPicker');
+      const button = document.querySelector('.emoji-button');
+      if (!picker.contains(e.target) && e.target !== button) {
+        picker.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html>
