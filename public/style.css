@@ -53,11 +53,11 @@
       } */
     }
   }
-  @media (max-width: 600px) {
-    .chat-container {
+   @media (max-width: 600px) {
+    /* .chat-container {
       background-color: black;
       
-    }
+    } */
     /* .menu-container{
       display: none;
     } */
