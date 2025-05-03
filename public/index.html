@@ -9,6 +9,47 @@
 </head>
 <body>
 
+  <!-- <div class="menu-container">
+    <button class="hamburger-menu" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="menu-content" id="menuContent">
+      <h3>Background Options</h3>
+      <div class="background-options">
+        <div class="background-option" onclick="changeBackground('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/jess-harding-lqT6NAmTaiY-unsplash.jpg')">
+          <div class="preview" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/jess-harding-lqT6NAmTaiY-unsplash.jpg')"></div>
+          <span>Default</span>
+        </div>
+        <div class="background-option" onclick="changeBackground('https://images.unsplash.com/photo-1519681393784-d120267933ba')">
+          <div class="preview" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba')"></div>
+          <span>Mountain</span>
+        </div>
+        <div class="background-option" onclick="changeBackground('https://images.unsplash.com/photo-1506318137071-a8e063a4b0ea')">
+          <div class="preview" style="background-image: url('https://images.unsplash.com/photo-1506318137071-a8e063a4b0ea')"></div>
+          <span>Space</span>
+        </div>
+        <div class="background-option" onclick="changeBackground('https://images.unsplash.com/photo-1519125323398-675f0ddb6308')">
+          <div class="preview" style="background-image: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308')"></div>
+          <span>Forest</span>
+        </div>
+        <div class="background-option" onclick="changeBackground('https://images.unsplash.com/photo-1519681393784-d120267933ba')">
+          <div class="preview" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba')"></div>
+          <span>Ocean</span>
+        </div>
+      </div>
+      <div class="menu-divider"></div>
+      <div class="blur-toggle">
+        <label class="toggle-label">
+          <input type="checkbox" id="blurToggle" onchange="toggleBlur()">
+          <span class="toggle-slider"></span>
+          <span class="toggle-text">Message Blur</span>
+        </label>
+      </div>
+    </div>
+  </div> -->
+
   <div class="gender-form" id="genderForm">
     <div>
       <form id="genderFormElement" onsubmit="handleGenderSubmit(event)">
@@ -35,6 +76,7 @@
     </div>
   </div>
 
+  <!-- REPORT FORM START--------------------------------------------------->
   <div class="report-form" id="reportForm" style="display: none;">
     <!-- <div class="close-form" onclick="closeReportForm()">
       ❌
@@ -67,10 +109,53 @@
     </form>
   </div>
   </div>
-  
+   <!-- REPORT FORM END --------------------------------------------------->
+
+   <!-- CHAT CONTAINER START--------------------------------------------------->
   <div class="chat-container">
     <div class="chat-header">
-      <div class="glass"></div>
+      <!-- <div class="glass"></div> -->
+      
+      <div class="menu-container-mobile">
+        <button class="hamburger-menu" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="menu-content" id="menuContent">
+          <h3>Background Options</h3>
+          <div class="background-options">
+            <div class="background-option" onclick="changeBackground('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/jess-harding-lqT6NAmTaiY-unsplash.jpg')">
+              <div class="preview" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/jess-harding-lqT6NAmTaiY-unsplash.jpg')"></div>
+              <span>Default</span>
+            </div>
+            <div class="background-option" onclick="changeBackground('https://images.unsplash.com/photo-1519681393784-d120267933ba')">
+              <div class="preview" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba')"></div>
+              <span>Mountain</span>
+            </div>
+            <div class="background-option" onclick="changeBackground('https://images.unsplash.com/photo-1506318137071-a8e063a4b0ea')">
+              <div class="preview" style="background-image: url('https://images.unsplash.com/photo-1506318137071-a8e063a4b0ea')"></div>
+              <span>Space</span>
+            </div>
+            <div class="background-option" onclick="changeBackground('https://images.unsplash.com/photo-1519125323398-675f0ddb6308')">
+              <div class="preview" style="background-image: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308')"></div>
+              <span>Forest</span>
+            </div>
+            <div class="background-option" onclick="changeBackground('https://images.unsplash.com/photo-1519681393784-d120267933ba')">
+              <div class="preview" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba')"></div>
+              <span>Ocean</span>
+            </div>
+          </div>
+          <div class="menu-divider"></div>
+          <div class="blur-toggle">
+            <label class="toggle-label">
+              <input type="checkbox" id="blurToggle" onchange="toggleBlur()">
+              <span class="toggle-slider"></span>
+              <span class="toggle-text">Message Blur</span>
+            </label>
+          </div>
+        </div>
+      </div>
       <div class="content">
           Message
       </div>
@@ -80,7 +165,7 @@
       <div class="message-sent">I'm great! You?</div>
     </div>
     <div class="chat-input">
-      <div class="glass"></div>
+      <!-- <div class="glass"></div> -->
       <div class="content">
         <input type="text" id="input" placeholder="Type a message...">
         <dv id="control">
@@ -103,6 +188,9 @@
       <span onclick="addEmoji('🙏')">🙏</span>
     </div>
   </div>
+   <!-- CHAT CONTAINER END--------------------------------------------------->
+
+
   <div class="footer">
     <div class="link"><a href="/privacy.html">privacy policy</a></div>
     <div class="link" onclick="openReportForm()">report an issue</div>
@@ -216,6 +304,74 @@
       const storedGender = localStorage.getItem('userGender');
       if (!storedGender) {
         document.getElementById('genderForm').style.display = 'flex';
+      }
+    });
+
+    function toggleMenu() {
+      const menu = document.getElementById('menuContent');
+      menu.classList.toggle('show');
+    }
+
+    function changeBackground(url) {
+      document.body.style.backgroundImage = `url('${url}')`;
+      localStorage.setItem('backgroundImage', url);
+      toggleMenu();
+    }
+
+    // Load saved background on page load
+    window.addEventListener('load', function() {
+      const savedBackground = localStorage.getItem('backgroundImage');
+      if (savedBackground) {
+        document.body.style.backgroundImage = `url('${savedBackground}')`;
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('menuContent');
+      const hamburger = document.querySelector('.hamburger-menu');
+      if (!menu.contains(e.target) && e.target !== hamburger && !hamburger.contains(e.target)) {
+        menu.classList.remove('show');
+      }
+    });
+
+    function toggleBlur() {
+      const blurToggle = document.getElementById('blurToggle');
+      const chatMessages = document.querySelector('.chat-messages');
+      const messages = document.querySelectorAll('.message-sent, .message-received');
+      
+      if (blurToggle.checked) {
+        chatMessages.style.backdropFilter = 'none';
+        chatMessages.style.webkitBackdropFilter = 'none';
+        messages.forEach(msg => {
+          msg.style.backdropFilter = 'none';
+          msg.style.webkitBackdropFilter = 'none';
+        });
+        localStorage.setItem('blurEnabled', 'false');
+      } else {
+        chatMessages.style.backdropFilter = 'blur(10px)';
+        chatMessages.style.webkitBackdropFilter = 'blur(10px)';
+        messages.forEach(msg => {
+          msg.style.backdropFilter = 'blur(10px)';
+          msg.style.webkitBackdropFilter = 'blur(10px)';
+        });
+        localStorage.setItem('blurEnabled', 'true');
+      }
+    }
+
+    // Load saved blur preference on page load
+    window.addEventListener('load', function() {
+      const savedBackground = localStorage.getItem('backgroundImage');
+      const blurEnabled = localStorage.getItem('blurEnabled');
+      const blurToggle = document.getElementById('blurToggle');
+      
+      if (savedBackground) {
+        document.body.style.backgroundImage = `url('${savedBackground}')`;
+      }
+      
+      if (blurEnabled === 'false') {
+        blurToggle.checked = true;
+        toggleBlur();
       }
     });
   </script>
