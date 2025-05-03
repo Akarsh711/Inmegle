@@ -142,6 +142,7 @@
     border-bottom-right-radius: 0;
     padding: 10px;
     border-radius: 11px;
+    max-width: 60%;
   }
 
   .message-received {
@@ -152,7 +153,9 @@
     border-bottom-right-radius: 0;
     padding: 10px;
     border-radius: 11px;
+    max-width: 60%;
   }
+
 
   .chat-input {
     display: flex;

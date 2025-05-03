@@ -3,7 +3,9 @@ frontend
     emoji not working   ...fixed temporary animations not working
     privacy form not closing by clicking outside ...fixed
     privacy form dynamic Background is not working ....fixed
-    report an issue form color fix
+    report an issue page form color need to be fix
+    privacy policy page slider is getting overflowed
+    initially toggle but is not correct
     menu options need some blur whchc is not currently blurry
 backend
     on tab close not disconnecting client 
