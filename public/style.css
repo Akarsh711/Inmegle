@@ -13,6 +13,7 @@
     display: flex;
     justify-content: center;  
     align-items: center;
+    flex-direction: column;
     height: 100vh; 
     min-height: 100vh;
     background: linear-gradient(to bottom, #7b7bb7, #722273 70%, #bebfc3);
@@ -22,7 +23,7 @@
   .chat-container {
     width: 100%;
     max-width: 999px;
-    height: 100vh;
+    height: 90vh;
     max-height: 844px;
     background-color: #fff;
     border-radius: 0;
@@ -33,7 +34,7 @@
     position: relative;
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: 600px) { /*after 600px*/
     .chat-container {
       border-radius: 30px;
       /* margin: 20px; */
@@ -153,4 +154,12 @@
     font-size: 20px;
     margin-left: 10px;
     cursor: pointer;
+  }
+
+  .footer{
+    display: flex;
+    color: rgb(61, 61, 61);
+  }
+  .link{
+    padding: 10px;
   }

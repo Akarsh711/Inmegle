@@ -1,1 +1,2 @@
 on tab close not disconnection client
+emoji not working
