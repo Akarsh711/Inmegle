@@ -67,6 +67,14 @@
 </body>
 <script>
 
+window.addEventListener('load', function() {
+      const savedBackground = localStorage.getItem('backgroundImage');
+      
+      
+      if (savedBackground) {
+        document.body.style.backgroundImage = `url('${savedBackground}')`;
+      }
+    });
   function closePrivacyPage() {
     console.log("closePrivacyPage");
     window.location.href = '/';
