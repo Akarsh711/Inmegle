@@ -9,16 +9,63 @@
 </head>
 <body>
 
-  <div class="report-form">
-    <div class="close-form">
-      ❌
+  <div class="gender-form" id="genderForm">
+    <div>
+      <form id="genderFormElement" onsubmit="handleGenderSubmit(event)">
+        <h3>Welcome to Inmegle</h3>
+        <p class="form-description">Please select your gender to continue</p>
+        <div class="form-group">
+          <div class="gender-options">
+            <label class="gender-option">
+              <input type="radio" name="gender" value="male" required>
+              <span class="gender-icon">👨</span>
+              <span class="gender-label">Male</span>
+            </label>
+            <label class="gender-option">
+              <input type="radio" name="gender" value="female" required>
+              <span class="gender-icon">👩</span>
+              <span class="gender-label">Female</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="submit-button">Continue</button>
+        </div>
+      </form>
     </div>
-    <form action="" method="post">
-      <input type="text" name="email" placeholder="Enter your email">
-      <input type="text" name="report-description" placeholder="Enter description">
-      <button type="submit">Send</button>
-      <p> Thank you for feedback we will try our best to resolve the issue and improve.</p>
+  </div>
+
+  <div class="report-form" id="reportForm" style="display: none;">
+    <!-- <div class="close-form" onclick="closeReportForm()">
+      ❌
+    </div> -->
+    <div>
+    <form id="reportFormElement" onsubmit="handleReportSubmit(event)">
+      <h3>Report an Issue</h3>
+      <div class="form-group">
+        <label for="email">Email (optional)</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+        <label for="reportType">Issue Type</label>
+        <select id="reportType" name="reportType" required>
+          <option value="">Select issue type</option>
+          <option value="abuse">Abuse/Harassment</option>
+          <option value="spam">Spam</option>
+          <option value="technical">Technical Issue</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="reportDescription">Description</label>
+        <textarea id="reportDescription" name="reportDescription" placeholder="Please describe the issue in detail..." required></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="submit-button">Submit Report</button>
+      </div>
+      <p class="form-message">Thank you for your feedback. We will review your report and take appropriate action.</p>
     </form>
+  </div>
   </div>
   
   <div class="chat-container">
@@ -57,9 +104,8 @@
     </div>
   </div>
   <div class="footer">
-    <div class="link">privacy policy </div>
-    <div class="link">report an issue</div>
-
+    <div class="link">privacy policy</div>
+    <div class="link" onclick="openReportForm()">report an issue</div>
   </div>
 
   <script>
@@ -92,6 +138,61 @@
       const button = document.querySelector('.emoji-button');
       if (!picker.contains(e.target) && e.target !== button) {
         picker.classList.remove('show');
+      }
+    });
+
+    function openReportForm() {
+      document.getElementById('reportForm').style.display = 'flex';
+    }
+
+    function closeReportForm() {
+      document.getElementById('reportForm').style.display = 'none';
+    }
+
+    function handleReportSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      
+      // Here you would typically send the data to your server
+      console.log('Report submitted:', Object.fromEntries(formData));
+      
+      // Show success message and close form after a delay
+      const message = form.querySelector('.form-message');
+      message.style.display = 'block';
+      setTimeout(() => {
+        closeReportForm();
+        form.reset();
+        message.style.display = 'none';
+      }, 3000);
+    }
+
+    // Close form when clicking outside
+    document.addEventListener('click', function(e) {
+      const reportForm = document.getElementById('reportForm');
+      if (e.target === reportForm) {
+        closeReportForm();
+      }
+    });
+
+    // Gender form handling
+    function handleGenderSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const gender = form.querySelector('input[name="gender"]:checked').value;
+      
+      // Store gender in localStorage
+      localStorage.setItem('userGender', gender);
+      
+      // Hide the form
+      document.getElementById('genderForm').style.display = 'none';
+    }
+
+    // Check if gender is already selected on page load
+    window.addEventListener('load', function() {
+      const storedGender = localStorage.getItem('userGender');
+      if (!storedGender) {
+        document.getElementById('genderForm').style.display = 'flex';
       }
     });
   </script>
