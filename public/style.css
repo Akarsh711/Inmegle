@@ -9,14 +9,16 @@
 
 
   body {
-     background-color: #f2f2f7;
+    background-color: #f2f2f7;
     display: flex;
     justify-content: center;  
     align-items: center;
     flex-direction: column;
     height: 100vh; 
     min-height: 100vh;
-    background: linear-gradient(to bottom, #7b7bb7, #722273 70%, #bebfc3);
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/jess-harding-lqT6NAmTaiY-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
     overflow: hidden;
   }
 
@@ -25,31 +27,59 @@
     max-width: 999px;
     height: 90vh;
     max-height: 844px;
-    background-color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  @media (min-width: 600px) { /*after 600px*/
+  @media (min-width: 600px) {
     .chat-container {
       border-radius: 30px;
-      /* margin: 20px; */
       height: calc(100vh - 40px);
     }
   }
 
   .chat-header {
-    background-color: #f2f2f7;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     padding: 20px;
     font-weight: 600;
     text-align: center;
     font-size: 18px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 5;
+    color: rgba(255, 255, 255, 0.9);
   }
+
+  .glass{
+    filter: blur(27px);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #bfb3b3;
+  }
+
+  .content{
+    position:relative;
+    display: flex;
+    width: 100%;
+    
+  }
+  /* .content{
+    position: absolute;
+    z-index: 99;
+  } */
 
   .chat-messages {
     flex: 1;
@@ -58,6 +88,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
   }
 
   .message {
@@ -67,18 +98,20 @@
     font-size: 15px;
     line-height: 1.4;
     word-wrap: break-word;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 
   .message.sent {
-    background-color: #007aff;
+    background: rgba(0, 122, 255, 0.8);
     color: #fff;
     align-self: flex-end;
     border-bottom-right-radius: 0;
   }
 
   .message.received {
-    background-color: #e5e5ea;
-    color: #000;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
     align-self: flex-start;
     border-bottom-left-radius: 0;
   }
@@ -87,8 +120,10 @@
     display: flex;
     align-items: center;
     padding: 15px;
-    border-top: 1px solid #ccc;
-    background-color: #f9f9f9;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 
   .chat-input input {
@@ -96,13 +131,18 @@
     border: none;
     padding: 10px 15px;
     border-radius: 20px;
-    background-color: #e5e5ea;
+    background: rgba(255, 255, 255, 0.2);
     font-size: 15px;
     outline: none;
+    color: #fff;
+  }
+
+  .chat-input input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
   }
 
   .send-button {
-    background-color: #007aff;
+    background: rgba(0, 122, 255, 0.8);
     color: white;
     border: none;
     margin-left: 10px;
@@ -110,14 +150,18 @@
     border-radius: 20px;
     cursor: pointer;
     font-weight: 500;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 
   .emoji-picker {
     position: absolute;
     bottom: 70px;
     right: 15px;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     padding: 10px;
     display: none;

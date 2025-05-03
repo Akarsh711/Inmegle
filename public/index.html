@@ -20,19 +20,27 @@
 
 
   <div class="chat-container">
-    <div class="chat-header">Messages</div>
+    <div class="chat-header">
+      <div class="glass"></div>
+      <div class="content">
+          Message
+      </div>
+    </div>
     <div class="chat-messages" id="messages">
       <div class="message-received">Hey there! How are you?</div>
       <div class="message-sent">I'm great! You?</div>
     </div>
     <div class="chat-input">
-      <input type="text" id="input" placeholder="Type a message...">
-      <dv id="control">
-        <button id="next" class="emoji-button" >🔁</button>
-      </dv>
-      <button class="emoji-button" onclick="toggleEmojiPicker()">😊</button>
-      
-      <button id="send" class="send-button"onclick="sendMessage()">Send</button>
+      <div class="glass"></div>
+      <div class="content">
+        <input type="text" id="input" placeholder="Type a message...">
+        <dv id="control">
+          <button id="next" class="emoji-button" >🔁</button>
+        </dv>
+        <button class="emoji-button" onclick="toggleEmojiPicker()">😊</button>
+        
+        <button id="send" class="send-button"onclick="sendMessage()">Send</button>
+      </div>
     </div>
     
     <div class="emoji-picker" id="emojiPicker">
