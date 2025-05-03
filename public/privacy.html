@@ -65,4 +65,19 @@
     </div>
   </div>
 </body>
+<script>
+
+  function closePrivacyPage() {
+    console.log("closePrivacyPage");
+    window.location.href = '/';
+    }
+
+  // Close form when clicking outside
+  document.addEventListener('click', function(e) {
+      const reportForm = document.getElementsByTagName('body')[0];
+      if (e.target === reportForm) {
+        closePrivacyPage();
+      }
+    });
+</script>
 </html> 

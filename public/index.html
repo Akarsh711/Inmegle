@@ -63,7 +63,7 @@
       <div class="form-actions">
         <button type="submit" class="submit-button">Submit Report</button>
       </div>
-      <p class="form-message">Thank you for your feedback. We will review your report and take appropriate action.</p>
+      <p class="form-message"></p>
     </form>
   </div>
   </div>
@@ -149,22 +149,45 @@
       document.getElementById('reportForm').style.display = 'none';
     }
 
-    function handleReportSubmit(event) {
+    async function handleReportSubmit(event) {
       event.preventDefault();
       const form = event.target;
-      const formData = new FormData(form);
-      
-      // Here you would typically send the data to your server
-      console.log('Report submitted:', Object.fromEntries(formData));
-      
-      // Show success message and close form after a delay
-      const message = form.querySelector('.form-message');
-      message.style.display = 'block';
-      setTimeout(() => {
-        closeReportForm();
-        form.reset();
-        message.style.display = 'none';
-      }, 3000);
+      const formData = {
+        email: form.email.value,
+        reportType: form.reportType.value,
+        reportDescription: form.reportDescription.value
+      };
+
+      try {
+        const response = await fetch('/api/report', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+        const message = form.querySelector('.form-message');
+        
+        if (result.success) {
+          message.textContent = 'Thank you for your feedback. We will review your report and take appropriate action.';
+          message.style.color = '#4CAF50';
+          setTimeout(() => {
+            closeReportForm();
+            form.reset();
+            message.textContent = '';
+          }, 3000);
+        } else {
+          message.textContent = 'Failed to submit report. Please try again later.';
+          message.style.color = '#f44336';
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        const message = form.querySelector('.form-message');
+        message.textContent = 'An error occurred. Please try again later.';
+        message.style.color = '#f44336';
+      }
     }
 
     // Close form when clicking outside

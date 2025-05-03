@@ -1,2 +1,18 @@
-on tab close not disconnection client
-emoji not working
+---------------------BUGS------------------------
+frontend
+    emoji not working
+    privacy form not closing by clicking outside ...fixed
+backend
+    on tab close not disconnecting client 
+
+
+---------------------LEFTOVER---------------------
+send mail(report page working)
+privacy policy check
+seo
+
+---------------------Testing-----------------------
+Test the overall UI on both phone and the desktop
+Test the chat functionality
+Test the chat UI functionality
+Test for the mail 

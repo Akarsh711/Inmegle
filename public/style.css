@@ -510,7 +510,7 @@
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/jess-harding-lqT6NAmTaiY-unsplash.jpg');
+    /* background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/jess-harding-lqT6NAmTaiY-unsplash.jpg'); */
     background-size: cover;
     background-position: center;
   }
