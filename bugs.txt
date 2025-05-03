@@ -1,20 +1,28 @@
 ---------------------BUGS------------------------
 frontend
-    emoji not working
+    emoji not working   ...temporary fixed animations not working
     privacy form not closing by clicking outside ...fixed
+    icon polishment 
+    menu options need some blur whihc is not working
 backend
     on tab close not disconnecting client 
 
 
 ---------------------LEFTOVER---------------------
-Background change option and blur on off option(as on mobile if there is not option to blur on/off then it is of no use as bg is not at all visible on mobile
+Background change option and blur on off option(as on mobile if there is not option to blur on/off then it is of no use as bg is not at all visible on mobile ...fixed
 send mail(report page working)
 privacy policy check
 seo
 optional: if got time or not affect speed then add animations
 
+
 ---------------------Testing-----------------------
-Test the overall UI on both phone and the desktop
-Test the chat functionality
-Test the chat UI functionality
-Test for the mail 
+frontend
+    Test the chat functionality
+    Test the overall UI on both phone and the desktop
+backend
+    Test the chat UI functionality
+    Test for the mail
+    
+---------------------NOTES--------------------------
+Theme will remain dark for now

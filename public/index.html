@@ -164,7 +164,7 @@
       <div class="message-received">Hey there! How are you?</div>
       <div class="message-sent">I'm great! You?</div>
     </div>
-    <div class="chat-input">
+    <div class="chat-input" >
       <!-- <div class="glass"></div> -->
       <div class="content">
         <input type="text" id="input" placeholder="Type a message...">
@@ -212,11 +212,20 @@
 
     function toggleEmojiPicker() {
       const picker = document.getElementById('emojiPicker');
-      picker.classList.toggle('show');
+      if (picker.style.display === 'block') {
+        picker.style.display = 'none';
+      } else {
+        picker.style.display = 'block';
+      }
+      // if(picker.style.opacity === 1){
+      //   picker.style.opacity = 0;
+      // } else {
+      //   picker.style.opacity = 1;
+      // }
     }
 
     function addEmoji(emoji) {
-      const input = document.getElementById('chatInput');
+      const input = document.getElementById('input');
       input.value += emoji;
       input.focus();
     }
