@@ -7,9 +7,11 @@ backend
 
 
 ---------------------LEFTOVER---------------------
+Background change option and blur on off option(as on mobile if there is not option to blur on/off then it is of no use as bg is not at all visible on mobile
 send mail(report page working)
 privacy policy check
 seo
+optional: if got time or not affect speed then add animations
 
 ---------------------Testing-----------------------
 Test the overall UI on both phone and the desktop

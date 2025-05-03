@@ -9,6 +9,39 @@
 </head>
 <body>
 
+  <div class="menu-container">
+    <button class="hamburger-menu" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="menu-content" id="menuContent">
+      <h3>Background Options</h3>
+      <div class="background-options">
+        <div class="background-option" onclick="changeBackground('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/jess-harding-lqT6NAmTaiY-unsplash.jpg')">
+          <div class="preview" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/jess-harding-lqT6NAmTaiY-unsplash.jpg')"></div>
+          <span>Default</span>
+        </div>
+        <div class="background-option" onclick="changeBackground('https://images.unsplash.com/photo-1519681393784-d120267933ba')">
+          <div class="preview" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba')"></div>
+          <span>Mountain</span>
+        </div>
+        <div class="background-option" onclick="changeBackground('https://images.unsplash.com/photo-1506318137071-a8e063a4b0ea')">
+          <div class="preview" style="background-image: url('https://images.unsplash.com/photo-1506318137071-a8e063a4b0ea')"></div>
+          <span>Space</span>
+        </div>
+        <div class="background-option" onclick="changeBackground('https://images.unsplash.com/photo-1519125323398-675f0ddb6308')">
+          <div class="preview" style="background-image: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308')"></div>
+          <span>Forest</span>
+        </div>
+        <div class="background-option" onclick="changeBackground('https://images.unsplash.com/photo-1519681393784-d120267933ba')">
+          <div class="preview" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba')"></div>
+          <span>Ocean</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="gender-form" id="genderForm">
     <div>
       <form id="genderFormElement" onsubmit="handleGenderSubmit(event)">
@@ -71,6 +104,7 @@
   <div class="chat-container">
     <div class="chat-header">
       <div class="glass"></div>
+      <div class="content">:</div>
       <div class="content">
           Message
       </div>
@@ -216,6 +250,34 @@
       const storedGender = localStorage.getItem('userGender');
       if (!storedGender) {
         document.getElementById('genderForm').style.display = 'flex';
+      }
+    });
+
+    function toggleMenu() {
+      const menu = document.getElementById('menuContent');
+      menu.classList.toggle('show');
+    }
+
+    function changeBackground(url) {
+      document.body.style.backgroundImage = `url('${url}')`;
+      localStorage.setItem('backgroundImage', url);
+      toggleMenu();
+    }
+
+    // Load saved background on page load
+    window.addEventListener('load', function() {
+      const savedBackground = localStorage.getItem('backgroundImage');
+      if (savedBackground) {
+        document.body.style.backgroundImage = `url('${savedBackground}')`;
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('menuContent');
+      const hamburger = document.querySelector('.hamburger-menu');
+      if (!menu.contains(e.target) && e.target !== hamburger && !hamburger.contains(e.target)) {
+        menu.classList.remove('show');
       }
     });
   </script>
