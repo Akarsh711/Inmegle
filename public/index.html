@@ -149,7 +149,7 @@
           <div class="menu-divider"></div>
           <div class="blur-toggle">
             <label class="toggle-label">
-              <input type="checkbox" id="blurToggle" onchange="toggleBlur()">
+              <input type="checkbox" defaultChecked id="blurToggle" onchange="toggleBlur()">
               <span class="toggle-slider"></span>
               <span class="toggle-text">Message Blur</span>
             </label>
@@ -340,7 +340,7 @@
       const chatMessages = document.querySelector('.chat-messages');
       const messages = document.querySelectorAll('.message-sent, .message-received');
       
-      if (blurToggle.checked) {
+      if (!blurToggle.checked) {
         chatMessages.style.backdropFilter = 'none';
         chatMessages.style.webkitBackdropFilter = 'none';
         messages.forEach(msg => {
