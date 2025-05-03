@@ -3,74 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Inmegle - A modern, anonymous chat platform for making new friends and having meaningful conversations">
-  <meta name="keywords" content="chat, anonymous chat, online chat, make friends, random chat">
-  <meta name="author" content="Inmegle">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Inmegle - Anonymous Chat Platform">
-  <meta property="og:description" content="Connect with strangers in a safe and anonymous environment">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://inmegle.com">
-  <title>Inmegle - Anonymous Chat Platform</title>
+  <title>Inmegle</title>
   <link rel="icon" type="image/x-icon" href="/images/favicon_io/favicon.ico">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- <div id="chat-container">
-        <div id="messages"></div>
-        <input id="input" placeholder="Type a message..." autocomplete="off" />
-        <button id="send">Send</button>
-        <div id="controls">
-          <button id="next">Next</button>
-        </div>
-      </div> -->
-
-  <header role="banner">
-    <div class="chat-container">
-      <div class="chat-header" role="heading" aria-level="1">
-        <div class="glass" aria-hidden="true"></div>
-        <div class="content">
-          <h1>Inmegle Chat</h1>
-        </div>
-      </div>
-      <main role="main">
-        <div class="chat-messages" id="messages" role="log" aria-live="polite">
-          <div class="message-received" role="article">Hey there! How are you?</div>
-          <div class="message-sent" role="article">I'm great! You?</div>
-        </div>
-      </main>
-      <div class="chat-input" role="form">
-        <div class="glass" aria-hidden="true"></div>
-        <div class="content">
-          <input type="text" id="input" placeholder="Type a message..." aria-label="Message input" autocomplete="off">
-          <div id="control">
-            <button id="next" class="emoji-button" aria-label="Next chat partner">🔁</button>
-          </div>
-          <button class="emoji-button" onclick="toggleEmojiPicker()" aria-label="Open emoji picker">😊</button>
-          <button id="send" class="send-button" onclick="sendMessage()" aria-label="Send message">Send</button>
-        </div>
-      </div>
-      
-      <div class="emoji-picker" id="emojiPicker" role="menu" aria-label="Emoji picker">
-        <span onclick="addEmoji('😀')" role="menuitem" tabindex="0">😀</span>
-        <span onclick="addEmoji('😁')" role="menuitem" tabindex="0">😁</span>
-        <span onclick="addEmoji('😂')" role="menuitem" tabindex="0">😂</span>
-        <span onclick="addEmoji('😍')" role="menuitem" tabindex="0">😍</span>
-        <span onclick="addEmoji('🥺')" role="menuitem" tabindex="0">🥺</span>
-        <span onclick="addEmoji('😎')" role="menuitem" tabindex="0">😎</span>
-        <span onclick="addEmoji('👍')" role="menuitem" tabindex="0">👍</span>
-        <span onclick="addEmoji('🙏')" role="menuitem" tabindex="0">🙏</span>
+  <div class="report-form">
+    <div class="close-form">
+      ❌
+    </div>
+    <form action="" method="post">
+      <input type="text" name="email" placeholder="Enter your email">
+      <input type="text" name="report-description" placeholder="Enter description">
+      <button type="submit">Send</button>
+      <p> Thank you for feedback we will try our best to resolve the issue and improve.</p>
+    </form>
+  </div>
+  
+  <div class="chat-container">
+    <div class="chat-header">
+      <div class="glass"></div>
+      <div class="content">
+          Message
       </div>
     </div>
-  </header>
+    <div class="chat-messages" id="messages">
+      <div class="message-received">Hey there! How are you?</div>
+      <div class="message-sent">I'm great! You?</div>
+    </div>
+    <div class="chat-input">
+      <div class="glass"></div>
+      <div class="content">
+        <input type="text" id="input" placeholder="Type a message...">
+        <dv id="control">
+          <button id="next" class="emoji-button" >🔁</button>
+        </dv>
+        <button class="emoji-button" onclick="toggleEmojiPicker()">😊</button>
+        
+        <button id="send" class="send-button"onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+    
+    <div class="emoji-picker" id="emojiPicker">
+      <span onclick="addEmoji('😀')">😀</span>
+      <span onclick="addEmoji('😁')">😁</span>
+      <span onclick="addEmoji('😂')">😂</span>
+      <span onclick="addEmoji('😍')">😍</span>
+      <span onclick="addEmoji('🥺')">🥺</span>
+      <span onclick="addEmoji('😎')">😎</span>
+      <span onclick="addEmoji('👍')">👍</span>
+      <span onclick="addEmoji('🙏')">🙏</span>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="link">privacy policy </div>
+    <div class="link">report an issue</div>
 
-  <footer class="footer" role="contentinfo">
-    <nav aria-label="Footer navigation">
-      <a href="/privacy" class="link">Privacy Policy</a>
-      <a href="/report" class="link">Report an Issue</a>
-    </nav>
-  </footer>
+  </div>
 
   <script>
     function sendMessage() {
