@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Allow: /privacy
+Disallow: /socket.io/
+Disallow: /images/
+
+Sitemap: https://inmegle.com/sitemap.xml 

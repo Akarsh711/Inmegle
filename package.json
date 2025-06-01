@@ -1,15 +1,22 @@
 {
-  "name": "omegle-clone",
+  "name": "inmegle",
   "version": "1.0.0",
+  "description": "A modern anonymous chat platform for connecting with people worldwide",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "anonymous chat",
+    "random chat",
+    "online chat",
+    "make friends",
+    "chat platform",
+    "real-time chat"
+  ],
+  "author": "Inmegle",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
